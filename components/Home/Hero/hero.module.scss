@@ -1,0 +1,126 @@
+@import "../../../styles/breakpoint";
+.main {
+  --bgImg: initial;
+  background-color: var(--dark);
+  width: 100%;
+  height: 100vh;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 120px;
+  @include xxl {
+    height: calc(100vh - 133px);
+  }
+  position: relative;
+  &:dir(rtl) {
+    &::after {
+      transform: scaleX(-1);
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: var(--bgImg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    inset: 0;
+  }
+  &_video {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    inset: 0;
+  }
+}
+
+.cover {
+  display: flex;
+  align-items: center;
+  max-width: 1290px;
+  margin-inline: auto;
+  width: 100%;
+  height: 100%;
+  color: var(--light);
+  padding-inline: 16px;
+  position: relative;
+  z-index: 2;
+  @include lg {
+    padding-inline: 0px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  button {
+    width: fit-content;
+  }
+  &[data-dark="true"] {
+    color: var(--dark);
+  }
+  &_text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 555px;
+    h1 {
+      font-size: 3rem;
+      line-height: calc(3rem * 1.2);
+      font-weight: 700;
+      @include lg {
+        font-size: 4rem;
+        line-height: 4.8rem;
+      }
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 2rem;
+      font-weight: 400;
+      max-width: 378px;
+    }
+  }
+}
+
+.testi {
+  display: flex;
+  align-items: center;
+  max-width: 340px;
+  gap: 8px;
+  &_text {
+    p {
+      font-size: 1rem;
+      line-height: 1.625rem;
+      font-weight: 400;
+      span {
+        background: var(--primary-gradient);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+      }
+    }
+  }
+  &_avatars {
+    display: flex;
+    flex-direction: row-reverse;
+    :nth-child(2) {
+      margin-left: -15px;
+    }
+    :nth-child(1) {
+      margin-left: -15px;
+    }
+    &_img {
+      object-fit: cover;
+      object-position: top;
+      border-radius: 999px;
+      border-radius: 999px;
+      border: 4px solid var(--dark);
+      background-color: var(--dark);
+    }
+  }
+}

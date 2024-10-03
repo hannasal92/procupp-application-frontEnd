@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #f6f6f6;
+  --secondary: #ededed;
+  --dark: #000000;
+  --light: #ffffff;
+  --text-secondary: #7e7e7e;
+  --gray: #979797;
+  --smooth: cubic-bezier(0.51, 0.45, 0, 0.87);
+  --primary-gradient: linear-gradient(97.13deg, #fedb1f 0%, #fe971f 100%);
+  --toastify-toast-bd-radius: 0px;
+}
+
+html,
+body,
+#__next {
+  font-family: "Inter Variable", sans-serif;
+  // overflow-x: hidden;
+}
+
+body {
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+// react colorful
+
+.react-colorful {
+  width: 100% !important;
+  &__saturation,
+  &__last-control {
+    border-radius: 0px !important;
+  }
+}

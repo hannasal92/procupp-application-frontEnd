@@ -1,0 +1,97 @@
+@import "../../../styles/breakpoint";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 1290px;
+  margin-inline: auto;
+  gap: 60px;
+  margin-bottom: 120px;
+  padding-inline: 16px;
+  @include lg {
+    padding-inline: 0px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  h1 {
+    font-size: 3rem;
+    line-height: calc(3rem * 1.2);
+    font-weight: 700;
+    @include lg {
+      font-size: 4rem;
+      line-height: 4.8rem;
+    }
+  }
+  p {
+    font-size: 0.875rem;
+    line-height: 1.0588rem;
+    background: #e8e8e880;
+    font-weight: 600;
+    width: fit-content;
+    padding: 0px 8px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &_box {
+    display: flex;
+    align-items: center;
+  }
+  &_line {
+    width: 4px;
+    height: 23px;
+    background: var(--primary-gradient);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(48px / 2);
+  @include lg {
+    gap: 48px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  &_icon {
+    height: 56px;
+    width: 56px;
+    background: var(--primary-gradient);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      object-fit: contain;
+    }
+  }
+  h3 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 700;
+    @include lg {
+      font-size: 1.5rem;
+      line-height: 1.8156rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+    line-height: calc(1rem * 1.5);
+    font-weight: 500;
+    color: var(--text-secondary);
+    @include lg {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+}

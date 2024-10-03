@@ -1,0 +1,234 @@
+@import "../../styles/breakpoint";
+
+.main {
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  width: 100%;
+  gap: 28px;
+  overflow: hidden;
+  transition: 0.3s all var(--smooth);
+  @include lg {
+    padding: 30px;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  gap: 16px;
+  @include lg {
+    align-items: center;
+    gap: 0px;
+    flex-direction: row;
+  }
+  h1 {
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    font-weight: 600;
+    color: #9f9f9f;
+    span {
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    }
+  }
+  &_box {
+    display: flex;
+    gap: 10px;
+    button {
+      white-space: nowrap;
+      background-color: var(--dark);
+      height: 52px;
+      padding: 16px;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      line-height: 20px;
+      font-weight: 600;
+      border: none;
+      color: var(--light);
+      cursor: pointer;
+      &[data-outline] {
+        background-color: transparent;
+        color: #9f9f9f;
+        border: 1px solid #d0d5dd;
+      }
+    }
+  }
+}
+
+.date {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  hr {
+    background-color: #d0d5dd;
+    border: none;
+    width: 1px;
+    height: 100%;
+  }
+  h3 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    color: #667085;
+    br {
+      @include lg {
+        display: none;
+      }
+    }
+    span {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+  }
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  @include lg {
+    gap: 50px;
+    flex-direction: row;
+  }
+  &_box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    @include lg {
+      width: 50%;
+    }
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.875rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    h4 {
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+      color: #667085;
+    }
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      font-weight: 500;
+      color: #667085;
+    }
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  &_box {
+    display: flex;
+    justify-content: space-between;
+    h4 {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      color: #667085;
+      font-weight: 500;
+    }
+  }
+  &_total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    border-top: 1px solid #d0d5dd;
+    h2 {
+      font-size: 1.25rem;
+      line-height: 1.875rem;
+      font-weight: 500;
+      color: var(--dark);
+      &[data-light] {
+        color: #667085;
+      }
+    }
+  }
+}
+
+.timeline {
+  display: flex;
+  gap: 56px;
+  min-height: 66px;
+  overflow-x: auto;
+  @include lg {
+    overflow-x: unset;
+    min-height: unset;
+  }
+  &_circle {
+    height: 18px;
+    width: 18px;
+    border-radius: 999px;
+    background-color: #d0d5dd;
+    &[data-active="true"] {
+      background-color: var(--dark);
+    }
+  }
+  &_line {
+    height: 4px;
+    width: 100%;
+    background-color: #d0d5dd;
+    position: absolute;
+    top: 50%;
+    &[data-active="true"] {
+      background-color: var(--dark);
+    }
+  }
+  &_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 95px;
+    gap: 2px;
+    position: relative;
+
+    h4 {
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+      color: #9f9f9f;
+      white-space: nowrap;
+      @include lg {
+        white-space: normal;
+      }
+      &[data-active="true"] {
+        color: var(--dark);
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      font-weight: 400;
+      color: #667085;
+      white-space: nowrap;
+      @include lg {
+        white-space: normal;
+      }
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+}

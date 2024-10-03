@@ -1,0 +1,141 @@
+@import "../../../styles/breakpoint";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 100px;
+  padding-bottom: 120px;
+  background: var(--dark);
+  padding-inline: 16px;
+  @include lg {
+    padding-inline: 0px;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 758px;
+  margin-inline: auto;
+  h1 {
+    font-size: 2rem;
+    line-height: calc(2rem * 1.4);
+    font-weight: 700;
+    color: var(--light);
+    text-align: center;
+    @include lg {
+      font-size: 3rem;
+      line-height: 3.6rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+    line-height: calc(1rem * 1.5);
+    font-weight: 400;
+    color: var(--light);
+    max-width: 498px;
+    text-align: center;
+    @include lg {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 758px;
+  margin-inline: auto;
+  width: 100%;
+  &_grid {
+    display: grid;
+    width: 100%;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0px;
+    }
+    &_card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+      &[data-merge="true"] {
+        grid-column: 1/3;
+        @include lg {
+          grid-column: auto;
+        }
+      }
+      &_icon {
+        height: 56px;
+        width: 56px;
+        border-radius: 999px;
+        background: var(--primary-gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          object-fit: contain;
+        }
+      }
+      p {
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.1812rem;
+        font-weight: 500;
+        color: var(--light);
+        max-width: 160px;
+      }
+    }
+  }
+}
+
+.form {
+  display: grid;
+  width: 100%;
+  row-gap: 30px;
+  column-gap: 28px;
+  grid-template-columns: repeat(1, 1fr);
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+    textarea,
+    button {
+      grid-column: 1/3;
+    }
+  }
+
+  button {
+    width: 100%;
+    margin-inline: auto;
+    @include lg {
+      width: fit-content;
+    }
+  }
+  input[type="number"] {
+    appearance: none;
+  }
+  textarea,
+  input {
+    border: 1px solid var(--light);
+    background: transparent;
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    font-weight: 400;
+    color: var(--light);
+    &::placeholder {
+      color: var(--light);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

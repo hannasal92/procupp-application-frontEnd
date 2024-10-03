@@ -1,0 +1,362 @@
+{
+  "Header": {
+    "Navigations": {
+      "Home": "Home",
+      "Product": "Products",
+      "About": "About Us",
+      "Contact": "Contact Us",
+      "Privacy-Policy": "Privacy Policy",
+      "Terms-And-Conditions": "Terms And Conditions"
+    },
+    "Buttons": {
+      "Login": "Login",
+      "Signup": "Sign up",
+      "Get-Started": "Get Started"
+    }
+  },
+  "Home": {
+    "Hero-Section": {
+      "Heading": "We turn every product into a work of art",
+      "Paragraph": "ProCupp is a company manufacturing and importing paper, cardboard and branding products."
+    },
+    "How-It-Work-Section": {
+      "Tag": "What We Do",
+      "Heading": "How It Works",
+      "Cards": {
+        "0": { "value": "Select raw materials and sizes" },
+        "1": { "value": "Upload the logo" },
+        "2": { "value": "Start designing" },
+        "3": { "value": "See visualization in 3D" },
+        "4": { "value": "Order the cups" },
+        "5": { "value": "Drink, and enjoy the moments" }
+      }
+    },
+    "Why-Procupp-Section": {
+      "Tag": "Why Choose Us?",
+      "Heading": "Why ProCupp?",
+      "Cards": {
+        "0": { "value": "Custom Branding For Products" },
+        "1": { "value": "Innovative Design Experience" },
+        "2": { "value": "Competitive Prices And Options" },
+        "3": { "value": "Customization And Accuracy" },
+        "4": { "value": "Quality Materials" },
+        "5": { "value": "Amazing Customer Suppport" }
+      }
+    },
+    "Product-We-Offer-Section": {
+      "Heading": "Products We Offer",
+      "Tabs": {
+        "0": { "value": "Plastic" },
+        "1": { "value": "Paper" }
+      }
+    }
+  },
+  "About": {
+    "Hero-Section": {
+      "Heading": "Packaging and branding solutions",
+      "Paragraph": "With us you will find much more than excellent cups, upgraded packaging and branding solutions."
+    },
+    "Our-Mission-Section": {
+      "Tag": "What We Do",
+      "Heading": "Our Mission",
+      "Cards": {
+        "0": { "value": "Quality Products" },
+        "1": { "value": "Innovation" },
+        "2": { "value": "Customer Satisfaction" },
+        "3": { "value": "Environmental Responsibility" },
+        "4": { "value": "Community Engagement" },
+        "5": { "value": "Long-Term Partnerships" }
+      }
+    },
+    "Our-Value-Section": {
+      "Tag": "What We Stand For",
+      "Heading": "Our Value",
+      "Cards": {
+        "0": { "value": "Quality" },
+        "1": { "value": "Integrity" },
+        "2": { "value": "Innovation" },
+        "3": { "value": "Sustainability" },
+        "4": { "value": "Customer Focus" },
+        "5": { "value": "Teamwork" }
+      }
+    }
+  },
+  "Contact": {
+    "Heading": "Get in touch with us",
+    "Paragraph": "we strive to deliver top-notch solutions to meet your unique needs.",
+    "Submit-Button": "Submit Message",
+    "Cards": {
+      "0": { "value": "Info@worldprint.com" },
+      "1": { "value": "04-9565660" },
+      "2": { "value": "Mon - Sat 9.00 - 17.00 Sunday Closed" }
+    },
+    "Inputs": {
+      "Name": "Your Name*",
+      "Email": "Email*",
+      "Number": "Phone Number*",
+      "City": "City*",
+      "Message": "Your Message"
+    }
+  },
+  "Login": {
+    "Heading": "Login to Your ProCupp Account",
+    "Paragraph": "Access your ProCupp account to manage your orders, track shipments, and update your personal information.",
+    "Inputs": {
+      "Email": "Email*",
+      "Password": "Password*"
+    },
+    "Buttons": {
+      "Login": "Login",
+      "Login-Google": "Login with google",
+      "Forgot": "Forgot Password?",
+      "Click": "Click Here"
+    }
+  },
+  "Signup": {
+    "Heading": "Our ValueCreate Your ProCupp Account",
+    "Paragraph": "Create your ProCupp account to manage your orders, track shipments, and update your personal information.",
+    "Inputs": {
+      "Name": "Name*",
+      "Email": "Email*",
+      "Password": "Password*",
+      "Confirm-Password": "Confirm Password*"
+    },
+    "Buttons": {
+      "Already": "Already have an account?",
+      "Login": "Login",
+      "Signup": "sign up",
+      "Signup-Google": "sign up with google"
+    },
+    "Radios": {
+      "RadioOne": "I agree with the privacy policy.",
+      "RadioTwo": "I agree with the terms and conditions"
+    }
+  },
+  "Profile-Tabs": {
+    "Profile": "Profile",
+    "Track-Order": "Track Order",
+    "Order-History": "Order History"
+  },
+  "Profile": {
+    "Heading": "Profile Details",
+    "Tabs": {
+      "Personal": "Personal Details",
+      "Shipping": "Shipping Details",
+      "Payment": "Payment Details"
+    },
+    "Personal": {
+      "DropPicture": {
+        "Upload-Tag": "Uploaded Profile Image*",
+        "Tag": "Current Profile Image*",
+        "Heading": "Upload Profile Picture To Change",
+        "Paragraph": "Upload a profile picture or drag the picture in the designated area to change your profile picture. Image size must be less than 5 MB",
+        "Button": "Upload Image"
+      },
+      "Inputs": {
+        "Name": "Name",
+        "Email": "E-mail",
+        "Password": "Password"
+      }
+    },
+    "Shipping": {
+      "Inputs": {
+        "Address": "Address",
+        "Country": "Country",
+        "Zipcode": "Zipcode",
+        "City": "City",
+        "State": "State/Province",
+        "Phone": "Phone"
+      }
+    },
+    "Payment": {
+      "Inputs": {
+        "Name": "Cardholder Name",
+        "Number": "Card Number",
+        "Exp": "Exp.Date",
+        "Cvv": "CVV"
+      }
+    },
+    "Buttons": {
+      "Back": "Back",
+      "Save": "Save",
+      "Change-Password": "Change Password",
+      "Make-Change": "Make Changes",
+      "Remove": "Remove",
+      "Add-New-Address": "Add New Address"
+    }
+  },
+  "Order-Card": {
+    "Order-ID": "Order ID:",
+    "Order-Date": "Order date:",
+    "Estimated-Delivery": "Estimated delivery:",
+    "Show-After-Shipped": "Show After Shipped",
+    "Order-Cancel": "Order Canceled",
+    "Order-Refund": "Order Refunded",
+    "Buttons": {
+      "Invoice": "Invoice",
+      "Track-Order": "Track Order",
+      "Click": "Click here to have a detailed view",
+      "Order-Again": "Order again"
+    },
+    "Timeline": {
+      "Order-Confirm": "Order Confirmed",
+      "Shipped": "Shipped",
+      "Out-of-Delivery": "Out For Delivery",
+      "Delivered": "Delivered",
+      "Processing": "processing"
+    },
+    "Details": {
+      "Payment": "Payment",
+      "Delivery": "Delivery",
+      "Address": "Address",
+      "Order-Summary": "Order Summary",
+      "Discount": "Discount",
+      "Tax": "Tax",
+      "Total": "Total"
+    }
+  },
+  "Cart": {
+    "Shopping-Cart": "Shopping Cart",
+    "Quantity": "Quantity",
+    "Order-Summary": "Order Summary",
+    "Subtotal": "Subtotal",
+    "Estimated-Tax": "Estimated Tax",
+    "Estimated-Shipped": "Estimated shipping & Handling",
+    "Total": "Total",
+    "Input-Labels": {
+      "Code": "Discount code / Promo code",
+      "Bonus-Card": "Your bonus card number"
+    },
+    "Inputs": {
+      "Code": "Code",
+      "Bonus-Card": "Enter Card Number"
+    },
+    "Buttons": {
+      "Apply": "Apply",
+      "Checkout": "Checkout"
+    }
+  },
+  "Checkout": {
+    "Buttons": {
+      "Next": "Next",
+      "Back": "Back"
+    },
+    "Header": {
+      "StepOne": "Step 1",
+      "StepTwo": "Step 2",
+      "StepThree": "Step 3",
+      "Address": "Address",
+      "Shipping": "Shipping",
+      "Payment": "Payment"
+    },
+    "Address": {
+      "Heading": "Select Address",
+      "CardHeading": "Address",
+      "Add-New-Address": "Add New Address"
+    },
+    "Shipping": {
+      "Heading": "Shipment Method",
+      "Options": {
+        "0": "Regulary shipment",
+        "1": "Get your delivery as soon as possible"
+      }
+    },
+    "Payment": {
+      "Payment": "Payment",
+      "Summary": "Summary",
+      "Address": "Address",
+      "Shipping-Method": "Shipment method",
+      "Subtotal": "Subtotal",
+      "Estimated-Tax": "Estimated Tax",
+      "Estimated-Shipped": "Estimated shipping & Handling",
+      "Total": "Total",
+      "Buttons": {
+        "Pay": "Pay",
+        "Back": "Back",
+        "Same-Billing-Address": "Same as billing address"
+      }
+    }
+  },
+  "Privacy-Policy": {
+    "Banner": "Privacy Policy",
+    "Heading": " At ProCupp, we are committed to protecting your privacy and ensuring the security of your personal information. By using our website, you agree to the terms outlined in this policy. Information We Collect:",
+    "Lists": {
+      "List-0": {
+        "0": "We collect personal information such as your name, email address, phone number, and shipping address when you place an order or sign up for our newsletter.",
+        "1": "We also collect non-personal information such as your IP address, browser type, and operating system to improve our website and services."
+      },
+      "List-1": {
+        "0": "How We Use Your Information:",
+        "1": "We use your personal information to process your orders, communicate with you about your purchases, and provide customer support.",
+        "2": "We may also use your information to send you promotional emails about our products and services, but you can opt out at any time."
+      },
+      "List-2": {
+        "0": "Data Security:",
+        "1": "We take the security of your data seriously and use industry-standard measures to protect it from unauthorized access, disclosure, or alteration.",
+        "2": "However, no method of transmission over the internet or electronic storage is 100% secure, so we cannot guarantee absolute security."
+      },
+      "List-3": {
+        "0": "Third-Party Disclosure:",
+        "1": "We do not sell, trade, or otherwise transfer your personal information to outside parties unless we provide you with advance notice or are required to do so by law."
+      },
+      "List-4": {
+        "0": "Changes to This Policy:",
+        "1": "We reserve the right to update or change this Privacy Policy at any time. Any changes will be posted on this page, and your continued use of our website after the changes are made will signify your acceptance of the new terms."
+      },
+      "List-5": {
+        "0": "Contact Us:",
+        "1": "If you have any questions about this Privacy Policy, please contact us at privacy@procupp.com."
+      }
+    }
+  },
+  "Terms-And-Conditions": {
+    "Banner": "Terms and Conditions",
+    "Heading": "Welcome to ProCupp! These Terms and Conditions govern your use of our website and the purchase of our products. By accessing or using our website, you agree to comply with these terms. Please read them carefully.",
+    "Lists": {
+      "List-0": {
+        "0": "Website Use:",
+        "1": "You may use our website for your personal, non-commercial use only.You may not use our website for any illegal or unauthorized purpose."
+      },
+      "List-1": {
+        "0": "Product Orders:",
+        "1": "When you place an order through our website, you agree to provide accurate and complete information. We reserve the right to cancel or refuse any order at our discretion."
+      },
+      "List-2": {
+        "0": "Payment:",
+        "1": "Payment for orders placed through our website must be made using a valid credit or debit card. We use a secure payment gateway to process payments."
+      },
+      "List-3": {
+        "0": "Shipping and Delivery:",
+        "1": "We strive to ship orders in a timely manner, but delivery times may vary depending on your location and the shipping method selected. We are not responsible for any delays caused by the shipping carrier."
+      },
+      "List-4": {
+        "0": "Returns and Exchanges:",
+        "1": "We accept returns and exchanges of unused and undamaged products within 30 days of purchase. Please refer to our Returns and Exchanges policy for more information."
+      },
+      "List-5": {
+        "0": "Intellectual Property:",
+        "1": "All content on our website, including text, images, logos, and graphics, is the property of ProCupp and is protected by copyright laws. You may not use or reproduce any content without our permission."
+      },
+      "List-6": {
+        "0": "Limitation of Liability:",
+        "1": "ProCupp shall not be liable for any direct, indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of our website or the purchase of our products."
+      },
+      "List-7": {
+        "0": "Governing Law:",
+        "1": "These Terms and Conditions are governed by the laws of [Your Country], and any disputes relating to these terms shall be resolved in the courts of [Your City], [Your Country]."
+      },
+      "List-8": {
+        "0": "Changes to Terms:",
+        "1": " We reserve the right to update or change these Terms and Conditions at any time. Any changes will be effective immediately upon posting to our website."
+      },
+      "List-9": {
+        "0": "Contact Us:",
+        "1": " If you have any questions about these Terms and Conditions, please contact us at terms@procupp.com."
+      }
+    }
+  },
+  "Footer": {
+    "Description": "Fermentum tellus ullamcorper ultricies sad lorem hate to adorn. Sem rhoncus adipiscing purus euismod. The lake is not drawn with a quiver, as one flatters with a bow.",
+    "Rights": "All rights reserved by ProCupp."
+  }
+}

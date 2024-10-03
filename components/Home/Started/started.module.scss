@@ -1,0 +1,93 @@
+@import "../../../styles/breakpoint";
+
+.main {
+  margin-inline: auto;
+  max-width: 1340px;
+  padding-inline: 16px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 64px;
+  background-color: var(--light);
+  margin-bottom: 120px;
+  margin-bottom: 120px;
+  &[data-direction="right"] {
+    @include lg {
+      flex-direction: row-reverse;
+    }
+  }
+  @include lg {
+    height: 630px;
+    padding: 25px;
+    flex-direction: row;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  max-width: 497px;
+  h2 {
+    font-size: 2rem;
+    line-height: calc(2rem * 1.4);
+    font-weight: 700;
+    @include lg {
+      font-size: 3rem;
+      line-height: 3.6rem;
+    }
+  }
+  p {
+    font-size: 1rem;
+    line-height: calc(1rem * 1.5);
+    @include lg {
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+  button {
+    width: fit-content;
+  }
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  @include lg {
+    height: 100%;
+  }
+  &_imgOne {
+    position: absolute;
+    width: calc(645px / 3);
+    height: calc(514px / 3);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    top: 0%;
+    left: 0%;
+    @include lg {
+      width: 645px;
+      height: 514px;
+    }
+  }
+  &_imgTwo {
+    position: absolute;
+    width: calc(545px / 2.5);
+    height: calc(314px / 2.5);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: white;
+    border: 8px solid var(--light);
+    right: -3%;
+    bottom: 0%;
+    @include lg {
+      border: 25px solid var(--light);
+      width: 545px;
+      height: 314px;
+    }
+  }
+}
