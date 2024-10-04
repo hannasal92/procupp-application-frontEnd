@@ -15,6 +15,8 @@ type Store = {
   previousPathForAddress: string;
   profileType: "personal" | "shipping" | "payment";
   currentProductPrice: number;
+  positionY : number,
+  positionZ : number,
   selectedAddress:
     | {
         heading: string;
@@ -40,4 +42,6 @@ export const store = proxy<Store>({
   selectedAddress: undefined,
   selecetedProductPriceAndQuantity: [],
   currentProductPrice: 0,
+  positionY : 0 ,
+  positionZ: 1
 });

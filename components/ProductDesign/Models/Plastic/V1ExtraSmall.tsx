@@ -15,6 +15,7 @@ type GLTFResult = GLTF & {
 };
 
 export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
+  const meshRef = useRef<THREE.Mesh>(null);
   const { nodes, materials } = useGLTF(
     "/product-design/models/plastic/v1_xs.glb"
   ) as GLTFResult;
@@ -32,13 +33,40 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
     store.handleCenterArrow = () => setXYZ([0, 0.055, 0.024]);
   }, []);
 
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setXYZ([position.x, globalState.positionY / 1000 + 0.055, 0]);
+
+    }
+  }, [globalState.positionY]);
+
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+      // Decompose the matrixWorld of the mesh
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setScl([0.08 * globalState.positionZ, 0.08 * globalState.positionZ, 0.08 * 0.5555]);
+    }
+  }, [globalState.positionZ]);
+
   let map = useTexture(globalState.productUploadImage);
 
   return (
     <group {...props} dispose={null}>
       <mesh
+        ref={meshRef} 
+        position={[0, -0.02, 0]}
         geometry={nodes.models.geometry}
         material={materials.plastic_cup_material}
+        scale={1.5}
+
       >
         <group position={[0, 0.05, 0.04]}>
           <PivotControls

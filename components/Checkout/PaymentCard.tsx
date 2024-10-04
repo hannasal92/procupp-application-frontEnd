@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import Payments from "../Profile/Payments";
 import { useState } from "react";
 import axios from "axios";
+import forge from 'node-forge';
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -30,6 +31,32 @@ type CardInfo = {
   focus: "number" | "name" | "expiry" | "cvc" | "";
 };
 
+const encryptData = (data : CardInfo) => {
+  const publicKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1V0adlzsoVYYs4CbEdvk
+y9U3rwoZjz6YV4/P9fVdStyP7CNOGRKHp786dtOyzKVv4HxTxnlTmeLf/3wmK97L
+0QXIXreBVT5KH6ev+rE3Sfse7yWeRT5x3zAncghiFDhjWPs19smmBpwKzPPnCMmg
+yKcC/48wncEFzmDCPpuLJSlvGhBVOS13TfgFLTVm1XjKcLzEC5zS3WBwz/jgcZ1/
+cWi7B9RqdSbjqhxUiBGLzXrmGkByrOGJfK+XHOwVymzbjNpA2RcfZ1XKDmDLQQl8
+l1qq4zf9u5gfcS4QfQn7nhSvq2/hcdT6oi18V0JD31Nxbgw2jqLTF/wjE02MHKHY
+9wIDAQAB
+-----END PUBLIC KEY-----`
+  if (!publicKey) return;
+
+  // Convert public key PEM to forge public key object
+  const publicKeyObj = forge.pki.publicKeyFromPem(publicKey);
+
+  // Encrypt the data (credit card details) using RSA-OAEP
+  const encrypted = publicKeyObj.encrypt(JSON.stringify(data), 'RSA-OAEP', {
+    md: forge.md.sha256.create(),
+  });
+  console.log(encrypted)
+
+  // Encode the encrypted data in base64
+  return forge.util.encode64(encrypted);
+};
+
+
 const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
   const [cardDetail, setCardDetail] = useState<CardInfo>({
     number: "",
@@ -46,9 +73,18 @@ const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
 
   const handlePlaceOrder = async () => {
     try {
+      const cardDetailsEncrypted = JSON.stringify({ encryptedData: encryptData(cardDetail) });
+      const data = {
+        user: user,
+        address: selectedAddress?.address,
+        phone: selectedAddress?.number,
+        cardDetails : cardDetailsEncrypted,
+        delivery: shipping?.price,
+        total: cartTotal,
+      }
       await axios.post(
         `${process.env.NEXT_PUBLIC_PAYLOAD_SERVER}/api/orders/payment`,
-        { status: "working", ...cardDetail } // here you can pass anything so you can get on backend req.body
+        { status: "working", data } // here you can pass anything so you can get on backend req.body
       );
 
       await client.request(CREATE_ORDER, {

@@ -37,6 +37,14 @@
   }
 }
 
+.range {
+  direction: ltr;
+  width: 100PX;
+  position: relative;
+  height : "30%";
+
+}
+
 .detail {
   display: flex;
   flex-direction: column;
@@ -161,7 +169,7 @@
     left: 1.5rem;
     font-weight: 400;
   }
-  button {
+  .addToCartBtn {
     text-transform: uppercase;
     width: 100%;
     background-color: var(--dark);
@@ -171,6 +179,17 @@
     border: none;
     cursor: pointer;
   }
+
+  // button {
+  //   text-transform: uppercase;
+  //   width: 100%;
+  //   background-color: var(--dark);
+  //   color: var(--light);
+  //   text-align: center;
+  //   height: 52px;
+  //   border: none;
+  //   cursor: pointer;
+  // }
 }
 
 .upload {
