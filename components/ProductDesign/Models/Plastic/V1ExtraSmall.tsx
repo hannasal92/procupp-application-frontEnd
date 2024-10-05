@@ -65,7 +65,7 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
         position={[0, -0.02, 0]}
         geometry={nodes.models.geometry}
         material={materials.plastic_cup_material}
-        scale={1.5}
+        scale={1.3}
 
       >
         <group position={[0, 0.05, 0.04]}>
@@ -74,14 +74,6 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
             scale={0.55}
             disableRotations
             activeAxes={[false, true, false]}
-            onDrag={(local) => {
-              const position = new THREE.Vector3(0, 0, 0);
-              const scale = new THREE.Vector3();
-              const quaternion = new THREE.Quaternion();
-              local.decompose(position, quaternion, scale);
-              setXYZ([position.x, position.y + 0.055, 0]);
-              setScl([0.08 * scale.y, 0.08 * scale.y, 0.08 * scale.z]);
-            }}
           />
         </group>
         <Suspense fallback={null}>
