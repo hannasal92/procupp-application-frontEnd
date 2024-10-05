@@ -62,7 +62,7 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
     <group {...props} dispose={null}>
       <mesh
         ref={meshRef} 
-        position={[0, -0.02, 0]}
+        position={[0, 0, 0]}
         geometry={nodes.models.geometry}
         material={materials.plastic_cup_material}
         scale={1.3}
