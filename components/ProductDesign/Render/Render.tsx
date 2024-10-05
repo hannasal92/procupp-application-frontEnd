@@ -13,6 +13,7 @@ import { Loader } from "@react-three/drei";
 const Render = ({ orbitFollow }: { orbitFollow: React.RefObject<OC> }) => {
   const { isOrbitControl } = useSnapshot(store);
   const [isClient, setIsClient] = useState(false);
+  console.log(isClient);
   useEffect(() => {
     setIsClient(true); // Ensure rendering only happens on the client
   }, []);
@@ -33,6 +34,7 @@ const Render = ({ orbitFollow }: { orbitFollow: React.RefObject<OC> }) => {
         </group>
         <Lighting />
       </Canvas>
+      {/* <Loader /> */}
       {isClient && <Loader />}
 
     </div>
