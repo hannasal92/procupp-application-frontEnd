@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin-bottom: 120px;
+  margin-bottom: 200px;
   @include xxl {
     height: calc(100vh - 133px);
   }
@@ -31,7 +31,7 @@
   }
   &_video {
     position: absolute;
-    height: 110%;
+    height: 120%;
     width: 100%;
     object-fit: cover;
     inset: 0;
