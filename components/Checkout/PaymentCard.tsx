@@ -110,7 +110,7 @@ const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
           }),
         },
       });
-      push("/");
+      push("/track-order");
       emptyCart();
     } catch (error) {
       console.log(error);
