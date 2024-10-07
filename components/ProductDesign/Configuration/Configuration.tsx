@@ -230,7 +230,7 @@ const Configuration = ({
     rel="noopener noreferrer"
     className={s.hover_link}
   >
-    Open Photo Editor in New Tab
+    Open Photo Editor
   </a>
   <span className={s.tooltip_text}>You can edit the photo first then you can upload it again here</span>
 </div>      
