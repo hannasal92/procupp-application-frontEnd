@@ -15,6 +15,7 @@ type GLTFResult = GLTF & {
 };
 
 export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
+  const meshRef = useRef<THREE.Mesh>(null);
   const { nodes, materials } = useGLTF(
     "/product-design/models/plastic/v1_xs.glb"
   ) as GLTFResult;
@@ -32,11 +33,36 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
     store.handleCenterArrow = () => setXYZ([0, 0.055, 0.024]);
   }, []);
 
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setXYZ([position.x, globalState.positionY / 1000 + 0.055, 0]);
+
+    }
+  }, [globalState.positionY]);
+
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+      // Decompose the matrixWorld of the mesh
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setScl([0.08 * globalState.positionZ, 0.08 * globalState.positionZ, 0.08 * 0.5555]);
+    }
+  }, [globalState.positionZ]);
+
   let map = useTexture(globalState.productUploadImage);
 
   return (
     <group {...props} dispose={null}>
       <mesh
+        ref={meshRef} 
+        position={[0, 0, 0]}
         geometry={nodes.models.geometry}
         material={materials.plastic_cup_material}
       >
@@ -46,14 +72,6 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
             scale={0.55}
             disableRotations
             activeAxes={[false, true, false]}
-            onDrag={(local) => {
-              const position = new THREE.Vector3(0, 0, 0);
-              const scale = new THREE.Vector3();
-              const quaternion = new THREE.Quaternion();
-              local.decompose(position, quaternion, scale);
-              setXYZ([position.x, position.y + 0.055, 0]);
-              setScl([0.08 * scale.y, 0.08 * scale.y, 0.08 * scale.z]);
-            }}
           />
         </group>
         <Suspense fallback={null}>

@@ -10,6 +10,7 @@ import { useTranslations } from "next-intl";
 import Payments from "../Profile/Payments";
 import { useState } from "react";
 import axios from "axios";
+import forge from 'node-forge';
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -30,6 +31,31 @@ type CardInfo = {
   focus: "number" | "name" | "expiry" | "cvc" | "";
 };
 
+const encryptData = (data : CardInfo) => {
+  const publicKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzrxa9bHLLQaLrNYCJcHl
+cJnOB6tnCNfUur13tEx27oVhc2AWUOy7n/OCer0sCs+ipVpV3lsd48Eo/A7JBPVi
+sQyb2zXWmnQE9skjS0VZ3b0Pc2sQoy4njvAtqrsz/MTr4pMm+vZA6UrWJXwXlZb2
+gSRmOjfZm5b1pZ0RPT5L31YAA+GWpTKuqLKpRksW7ErxGHXhu8S9kPW8ZPhAnkZj
+i5jla2YvGLlcK5ZNc152ZoSHOjzS28voZnKnoj2IfyePTijuaLBS83/XKswOgj6a
+fa6kiJ8rFwGn2lYJRGIUDXWGxpTA1Ry45b5k0YDKhI03Tmyqq5PFgZJMFR+VjgeA
+GQIDAQAB
+-----END PUBLIC KEY-----`
+  if (!publicKey) return;
+
+  // Convert public key PEM to forge public key object
+  const publicKeyObj = forge.pki.publicKeyFromPem(publicKey);
+
+  // Encrypt the data (credit card details) using RSA-OAEP
+  const encrypted = publicKeyObj.encrypt(JSON.stringify(data), 'RSA-OAEP', {
+    md: forge.md.sha256.create(),
+  });
+
+  // Encode the encrypted data in base64
+  return forge.util.encode64(encrypted);
+};
+
+
 const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
   const [cardDetail, setCardDetail] = useState<CardInfo>({
     number: "",
@@ -46,9 +72,18 @@ const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
 
   const handlePlaceOrder = async () => {
     try {
+      const cardDetailsEncrypted = JSON.stringify({ encryptedData: encryptData(cardDetail) });
+      const data = {
+        user: user,
+        address: selectedAddress?.address,
+        phone: selectedAddress?.number,
+        cardDetails : cardDetailsEncrypted,
+        delivery: shipping?.price,
+        total: cartTotal,
+      }
       await axios.post(
         `${process.env.NEXT_PUBLIC_PAYLOAD_SERVER}/api/orders/payment`,
-        { status: "working", ...cardDetail } // here you can pass anything so you can get on backend req.body
+        { status: "working", data } // here you can pass anything so you can get on backend req.body
       );
 
       await client.request(CREATE_ORDER, {

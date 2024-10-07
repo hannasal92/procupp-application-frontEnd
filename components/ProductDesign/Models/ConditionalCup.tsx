@@ -40,16 +40,20 @@ const ConditionalCup = () => {
       return <Double12oz scale={1.4} />;
 
     case "paper 2 oz 60ml":
-      return <Cup2oz scale={1.4} />;
+      return <Cup2oz scale={2.2} 
+      position={[0, 0.007, 0]}
+      />;
 
     case "paper 4 oz 120ml":
-      return <Cup4oz scale={1.4} />;
+      return <Cup4oz scale={1.9} />;
 
     case "paper 8 oz 240ml":
-      return <Cup8oz scale={1.4} />;
+      return <Cup8oz scale={1.6} />;
 
     case "paper 9 oz 250ml":
-      return <Cup9oz scale={1.4} />;
+      return <Cup9oz scale={1.6} 
+      position={[0, -0.01, 0]}
+      />;
 
     case "paper 12 oz 500ml":
       return <Cup12oz scale={1.4} />;
@@ -58,28 +62,37 @@ const ConditionalCup = () => {
       return <V1Large scale={1} />;
 
     case "plastic v1 medium":
-      return <V1Medium scale={1.2} />;
-
+      return <V1Medium scale={1.5} 
+      position={[0, -0.01, 0]}
+    />;
     case "plastic v1 small":
-      return <V1Small scale={1.2} />;
+      return <V1Small scale={1.6} />;
 
     case "plastic v1 extra small":
-      return <V1ExtraSmall scale={1.2} />;
+      return <V1ExtraSmall scale={1.6} />;
 
     case "plastic v2 large":
-      return <V2Large scale={1.2} />;
+      return <V2Large scale={1.6} 
+      position={[0, -0.02, 0]}
+      />;
 
     case "plastic v2 medium":
-      return <V2Medium scale={1.2} />;
+      return <V2Medium scale={1.6} 
+      position={[0, -0.01, 0]}
+      />;
 
     case "plastic v2 small":
-      return <V2Small scale={1.2} />;
+      return <V2Small scale={1.6} 
+      />;
 
     case "plastic v2 extra large":
-      return <V2ExtraLarge scale={1.2} />;
+      return <V2ExtraLarge scale={1.6} 
+      />;
 
     case "plastic highball":
-      return <Highball scale={1.2} />;
+      return <Highball scale={1.3} 
+      position={[0, -0.02, 0]}
+      />;
 
     default:
       push("/products");

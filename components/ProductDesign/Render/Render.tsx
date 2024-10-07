@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import s from "./render.module.scss";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Lighting from "./Lighting";
 import ConditionalCup from "../Models/ConditionalCup";
 import { useSnapshot } from "valtio";
@@ -12,7 +12,10 @@ import { Loader } from "@react-three/drei";
 
 const Render = ({ orbitFollow }: { orbitFollow: React.RefObject<OC> }) => {
   const { isOrbitControl } = useSnapshot(store);
-
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true); // Ensure rendering only happens on the client
+  }, []);
   return (
     <div className={s.main}>
       <Options />
@@ -30,7 +33,9 @@ const Render = ({ orbitFollow }: { orbitFollow: React.RefObject<OC> }) => {
         </group>
         <Lighting />
       </Canvas>
-      <Loader />
+      {/* <Loader /> */}
+      {isClient && <Loader />}
+
     </div>
   );
 };

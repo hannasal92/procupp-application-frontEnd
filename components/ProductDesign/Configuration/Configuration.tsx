@@ -5,6 +5,8 @@ import {
   Move,
   Upload,
   VerticalArrow,
+  MagnifyingGlassPlus,
+  MagnifyingGlassMinus
 } from "../Icons";
 import s from "./config.module.scss";
 import ColorBtn from "./ColorBtn";
@@ -37,11 +39,25 @@ const Configuration = ({
   const uploadImageRef = useRef<HTMLInputElement>(null);
   const detailBoxRef = useRef<HTMLDivElement>(null);
   const cropperRef = useRef<ReactCropperElement>(null);
-
+  const photoEditorUrl  = process.env.NEXT_PUBLIC_PHOTO_EDITOR_LINK ?? "https://www.fotor.com/photo-editor-app/editor/effect"
   const [isCopperOpen, setIsCopperOpen] = useState<boolean>(false);
   const [cropFile, setCropFile] = useState<File>();
   const [image, setImage] = useState("/home/hero-bg.png");
+  const [positionY, setPositionY] = useState(0);
+  const [positionZ, setPositionZ] = useState(1);
+  const handleRangeInput = (event : any) => {
+    store.positionY = positionY;
+    setPositionY(event.target.value);
+  }
+  const handleImageSize = (type : string) => {
+    store.positionZ = positionZ;
+    if(type == "plus"){
+      setPositionZ(positionZ + 0.1);
 
+    }else{
+      setPositionZ(positionZ - 0.1);
+    }
+  }
   const handleUpload = (e: any) => {
     setCropFile(undefined);
     if (uploadImageRef.current?.files) {
@@ -197,17 +213,28 @@ const Configuration = ({
             <button onClick={handleDeleteUploadImage} data-box>
               <Delete />
             </button>
-            <button onClick={handleMovement} data-box>
+            {/* <button onClick={handleMovement} data-box>
               <Move />
-            </button>
+            </button> */}
           </div>
-          <button onClick={handleCenterArrow}>
+          {/* <button onClick={handleCenterArrow}>
             <VerticalArrow /> <span>Centre Vertically</span>
-          </button>
+          </button> */}
           {/* <button>
           <HorizontalArrow /> <span>Centre Horizontally</span>
         </button> */}
-          <ColorBtn />
+<div style={{ position: 'relative', display: 'inline-block' }}>
+  <a 
+    href= {photoEditorUrl}
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={s.hover_link}
+  >
+    Open Photo Editor
+  </a>
+  <span className={s.tooltip_text}>You can edit the photo first then you can upload it again here</span>
+</div>      
+        <ColorBtn />
           <div className={s.uploadBtn}>
             <input
               onChange={handleUpload}
@@ -242,7 +269,43 @@ const Configuration = ({
           Netus tortor nibh sed aliquet in vitae. Massa neque augue dignissim
           vel quam. In convallis lacus netus ornare ut tempus orci.
         </p> */}
-          <button onClick={handleAddToCartWithToastPromise}>Add to cart</button>
+        
+            <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',  // Stack everything vertically
+            alignItems: 'center',
+            gap: '20px',              // Space between the sections
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',        // Horizontal layout for button and slider
+              gap: '10px',            // Space between button and slider
+            }}
+          >
+            <button style={{ height: '100px', width: '100px' , border : "none", background: 'transparent'}} onClick={() => handleImageSize("plus")}>
+              <MagnifyingGlassPlus />
+            </button>
+
+            <button className="MagnifyingGlassMinus" style={{ height: '100px', width: '100px', border : "none", background: 'transparent' }} onClick={() => handleImageSize("minus")}>
+              <MagnifyingGlassMinus />
+            </button>
+
+          </div>
+
+          <input
+            type="range"
+            style={{ width: '200px' }}    // Adjust width if needed
+            onChange={handleRangeInput}
+            min={-50}
+            max={50}
+            step={1}
+            value={positionY}
+          />
+        </div>
+
+        <button className={s.addToCartBtn} onClick={handleAddToCartWithToastPromise}>Add to cart</button>
         </div>
       </div>
     </>
