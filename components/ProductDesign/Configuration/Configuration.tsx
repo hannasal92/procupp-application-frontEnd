@@ -40,7 +40,6 @@ const Configuration = ({
   const detailBoxRef = useRef<HTMLDivElement>(null);
   const cropperRef = useRef<ReactCropperElement>(null);
   const photoEditorUrl  = process.env.NEXT_PUBLIC_PHOTO_EDITOR_LINK ?? "https://www.fotor.com/photo-editor-app/editor/effect"
-  console.log(photoEditorUrl);
   const [isCopperOpen, setIsCopperOpen] = useState<boolean>(false);
   const [cropFile, setCropFile] = useState<File>();
   const [image, setImage] = useState("/home/hero-bg.png");
