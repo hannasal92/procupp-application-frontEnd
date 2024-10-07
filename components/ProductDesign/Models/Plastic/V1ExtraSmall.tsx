@@ -65,8 +65,6 @@ export function V1ExtraSmall(props: JSX.IntrinsicElements["group"]) {
         position={[0, 0, 0]}
         geometry={nodes.models.geometry}
         material={materials.plastic_cup_material}
-        scale={1.3}
-
       >
         <group position={[0, 0.05, 0.04]}>
           <PivotControls
