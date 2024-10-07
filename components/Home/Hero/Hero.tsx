@@ -48,8 +48,8 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
         muted
       />
       <div className={s.cover}>
-        <div data-dark={isVideo} className={`content ${s.content}`}>
-          <div className={`content-text ${s.content_text}`}>{children}</div>
+        {/* <div data-dark={isVideo} className={`content ${s.content}`}> */}
+          {/* <div className={`content-text ${s.content_text}`}>{children}</div> */}
           {/* <div className="btn">
             <Button>
               Get Started <Arrow />
@@ -77,7 +77,7 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
               </p>
             </div>
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </section>
   );
