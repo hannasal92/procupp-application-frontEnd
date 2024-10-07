@@ -50,7 +50,6 @@ GQIDAQAB
   const encrypted = publicKeyObj.encrypt(JSON.stringify(data), 'RSA-OAEP', {
     md: forge.md.sha256.create(),
   });
-  console.log(encrypted)
 
   // Encode the encrypted data in base64
   return forge.util.encode64(encrypted);
