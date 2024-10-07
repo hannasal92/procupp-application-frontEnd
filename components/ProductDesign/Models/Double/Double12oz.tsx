@@ -27,6 +27,7 @@ export function Double12oz(props: JSX.IntrinsicElements["group"]) {
 
   const [pos, setXYZ] = useState([0, 0.064, 0.024]);
   const [scl, setScl] = useState([0.056, 0.056, 0.056]);
+  const meshRef = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
     setXYZ((prev) => [prev[0], prev[1], 0]);
@@ -36,11 +37,35 @@ export function Double12oz(props: JSX.IntrinsicElements["group"]) {
     store.handleCenterArrow = () => setXYZ([0, 0.064, 0.024]);
   }, []);
 
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setXYZ([position.x, globalState.positionY / 1000 + 0.055, 0]);
+
+    }
+  }, [globalState.positionY]);
+
+  useEffect(() => {
+    if (meshRef.current) {
+      const position = new THREE.Vector3();
+      const rotation = new THREE.Quaternion();
+      const scale = new THREE.Vector3();
+      // Decompose the matrixWorld of the mesh
+      meshRef.current.matrixWorld.decompose(position, rotation, scale);
+      setScl([0.08 * globalState.positionZ, 0.08 * globalState.positionZ, 0.08 * 0.5555]);
+    }
+  }, [globalState.positionZ]);
+
   let map = useTexture(globalState.productUploadImage);
 
   return (
     <group {...props} dispose={null}>
       <mesh
+        ref={meshRef}
         geometry={nodes.cup_double_12oz.geometry}
         material={materials.generic_cup_material}
         material-color={globalState.productColor}
@@ -60,14 +85,6 @@ export function Double12oz(props: JSX.IntrinsicElements["group"]) {
             scale={0.55}
             disableRotations
             activeAxes={[false, true, false]}
-            onDrag={(local) => {
-              const position = new THREE.Vector3(0, 0, 0);
-              const scale = new THREE.Vector3();
-              const quaternion = new THREE.Quaternion();
-              local.decompose(position, quaternion, scale);
-              setXYZ([position.x, position.y + 0.064, 0]);
-              setScl([0.056 * scale.y, 0.056 * scale.y, 0.056 * scale.z]);
-            }}
           />
         </group>
         <Suspense fallback={null}>
