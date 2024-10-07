@@ -21,8 +21,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero isVideo>
-        <h1>{t("Hero-Section.Heading")}</h1>
-        <p>{t("Hero-Section.Paragraph")}</p>
+        {/* <h1>{t("Hero-Section.Heading")}</h1>
+        <p>{t("Hero-Section.Paragraph")}</p> */}
       </Hero>
       <Work
         heading={t("How-It-Work-Section.Heading")}
