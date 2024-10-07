@@ -282,11 +282,11 @@ const Configuration = ({
               gap: '10px',            // Space between button and slider
             }}
           >
-            <button style={{ height: '100px', width: '100px' , backgroundColor: "while" }} onClick={() => handleImageSize("plus")}>
+            <button style={{ height: '100px', width: '100px' , border : "none", background: 'transparent'}} onClick={() => handleImageSize("plus")}>
               <MagnifyingGlassPlus />
             </button>
 
-            <button style={{ height: '100px', width: '100px' }} onClick={() => handleImageSize("minus")}>
+            <button className="MagnifyingGlassMinus" style={{ height: '100px', width: '100px', border : "none", background: 'transparent' }} onClick={() => handleImageSize("minus")}>
               <MagnifyingGlassMinus />
             </button>
 
