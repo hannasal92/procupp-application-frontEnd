@@ -223,7 +223,16 @@ const Configuration = ({
           {/* <button>
           <HorizontalArrow /> <span>Centre Horizontally</span>
         </button> */}
-          <ColorBtn />
+        <div>
+          <a 
+            href="https://www.fotor.com/photo-editor-app/editor/effect" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Open Photo Editor in New Tab
+          </a>
+        </div>          
+        <ColorBtn />
           <div className={s.uploadBtn}>
             <input
               onChange={handleUpload}
