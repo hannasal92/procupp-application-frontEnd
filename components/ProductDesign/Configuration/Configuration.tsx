@@ -39,7 +39,8 @@ const Configuration = ({
   const uploadImageRef = useRef<HTMLInputElement>(null);
   const detailBoxRef = useRef<HTMLDivElement>(null);
   const cropperRef = useRef<ReactCropperElement>(null);
-
+  const photoEditorUrl  = process.env.NEXT_PUBLIC_PHOTO_EDITOR_LINK ?? "https://www.fotor.com/photo-editor-app/editor/effect"
+  console.log(photoEditorUrl);
   const [isCopperOpen, setIsCopperOpen] = useState<boolean>(false);
   const [cropFile, setCropFile] = useState<File>();
   const [image, setImage] = useState("/home/hero-bg.png");
@@ -223,15 +224,17 @@ const Configuration = ({
           {/* <button>
           <HorizontalArrow /> <span>Centre Horizontally</span>
         </button> */}
-        <div>
-          <a 
-            href="https://www.fotor.com/photo-editor-app/editor/effect" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            Open Photo Editor in New Tab
-          </a>
-        </div>          
+<div style={{ position: 'relative', display: 'inline-block' }}>
+  <a 
+    href= {photoEditorUrl}
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={s.hover_link}
+  >
+    Open Photo Editor in New Tab
+  </a>
+  <span className={s.tooltip_text}>You can edit the photo first then you can upload it again here</span>
+</div>      
         <ColorBtn />
           <div className={s.uploadBtn}>
             <input
