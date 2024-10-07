@@ -40,6 +40,7 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
       }
       className={s.main}
     >
+      {isVideo &&
       <video
         className={s.main_video}
         src="/home/hero.mp4"
@@ -47,6 +48,7 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
         playsInline
         muted
       />
+      }
       <div className={s.cover}>
         {/* <div data-dark={isVideo} className={`content ${s.content}`}> */}
           {/* <div className={`content-text ${s.content_text}`}>{children}</div> */}
