@@ -47,7 +47,7 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo, hideChildren=false })
         src="/home/hero.mp4"
         autoPlay
         playsInline
-        
+        muted
       />
       }
       <div className={s.cover}>
