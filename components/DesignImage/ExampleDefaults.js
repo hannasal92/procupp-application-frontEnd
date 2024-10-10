@@ -23,8 +23,7 @@ export default function Example({handleUpload}) {
       <div style={{ height: "70vh" }}>
         <PinturaEditor
           {...editorDefaults}
-          src={"./blank_image.jpg"}
-          imageCropAspectRatio={1}
+          src={"./9ozworld.jpg"}
           // onLoad={(res) => console.log("load image", res)}
           onProcess={({ dest }) => handleUpload(dest, true)}
         />
