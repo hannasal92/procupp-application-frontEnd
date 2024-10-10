@@ -7,6 +7,7 @@ type Store = {
   selecetedProductPriceAndQuantity: { quantity: string; price: number }[];
   selectedProduct: string;
   cartProduct: string;
+  fileImage : string,
   productColor: string;
   productUploadImage: string;
   isOrbitControl: boolean;
@@ -31,6 +32,7 @@ export const store = proxy<Store>({
   handleSaveCanvas: async () => undefined,
   handleCenterArrow: () => {},
   selectedProduct: "",
+  fileImage : "",
   cartProduct: "",
   productColor: "#ffffff",
   productUploadImage: "/demo-logo.png",

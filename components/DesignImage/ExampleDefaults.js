@@ -13,10 +13,10 @@ const editorDefaults = getEditorDefaults({
   stickers: ["😎", "sticker-one.svg", "sticker-two.svg", "sticker-three.svg"],
 });
 
-export default function Example({ handleImage}) {
+export default function Example({handleUpload}) {
   // inline result
   // const [result, setResult] = useState("");
-
+  
   return (
     <div>
 
@@ -26,7 +26,7 @@ export default function Example({ handleImage}) {
           src={"./blank_image.jpg"}
           imageCropAspectRatio={1}
           // onLoad={(res) => console.log("load image", res)}
-          onProcess={({ dest }) => handleImage(dest)}
+          onProcess={({ dest }) => handleUpload(dest, true)}
         />
       </div>
     </div>
