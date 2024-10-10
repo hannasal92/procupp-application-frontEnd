@@ -7,14 +7,14 @@ import { useGSAP } from "@gsap/react";
 import gsap, { Power3 } from "gsap";
 import { useRouter } from "next/router";
 import { getLangDir } from "rtl-detect";
-
 type Props = {
   children: React.ReactNode;
   bgSrc?: string;
   isVideo?: boolean;
+  hideChildren?: boolean
 };
 
-const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
+const Hero: React.FC<Props> = ({ children, bgSrc, isVideo, hideChildren=false }) => {
   const { locale } = useRouter();
   const direction = getLangDir(locale!);
   const container = useRef<HTMLElement>(null);
@@ -41,17 +41,18 @@ const Hero: React.FC<Props> = ({ children, bgSrc, isVideo }) => {
       className={s.main}
     >
       {isVideo &&
+
       <video
         className={s.main_video}
         src="/home/hero.mp4"
         autoPlay
         playsInline
-        
+        muted
       />
       }
       <div className={s.cover}>
         {/* <div data-dark={isVideo} className={`content ${s.content}`}> */}
-          <div className={`content-text ${s.content_text}`}>{children}</div>
+          <div className={`content-text ${s.content_text}`}>  {!hideChildren ? children : ""}</div>
           {/* <div className="btn">
             <Button>
               Get Started <Arrow />

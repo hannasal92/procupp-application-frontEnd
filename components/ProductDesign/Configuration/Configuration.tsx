@@ -20,7 +20,7 @@ import { OrbitControls as OC } from "three-stdlib";
 import Cropper, { ReactCropperElement } from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import Button from "@/components/Common/Button";
-
+import BasicModal from './Modal';
 const Configuration = ({
   orbitFollow,
 }: {
@@ -45,6 +45,17 @@ const Configuration = ({
   const [image, setImage] = useState("/home/hero-bg.png");
   const [positionY, setPositionY] = useState(0);
   const [positionZ, setPositionZ] = useState(1);
+  const [open, setOpen] = useState(false);
+
+  // Open Modal
+  const openModal = () => {
+    setOpen(true);
+  };
+
+  // Close Modal
+  const closeModal = () => {
+    setOpen(false);
+  };
   const handleRangeInput = (event : any) => {
     store.positionY = positionY;
     setPositionY(event.target.value);
@@ -60,8 +71,14 @@ const Configuration = ({
   }
   const handleUpload = (e: any) => {
     setCropFile(undefined);
-    if (uploadImageRef.current?.files) {
-      let file = uploadImageRef.current?.files[0];
+    let file : any  ;
+    if(open == true){
+      setOpen(false);
+      file = e ;
+    }else if (uploadImageRef.current?.files){
+      file = uploadImageRef.current?.files[0];
+    }
+      store.fileImage = file ;
       // create an image element with that selected file
       var img = new Image();
       img.src = window.URL.createObjectURL(file);
@@ -96,7 +113,7 @@ const Configuration = ({
           });
         }
       };
-    }
+    
   };
 
   const handleDeleteUploadImage = () => {
@@ -111,6 +128,7 @@ const Configuration = ({
 
   const handleAddToCart = async () => {
     try {
+
       let image = await handleSaveCanvas();
       const formdata = new FormData();
       formdata.append(
@@ -177,6 +195,7 @@ const Configuration = ({
 
   return (
     <>
+
       <div data-active={isCopperOpen} className={s.copper}>
         <div data-active={isCopperOpen} className={s.copper_popup}>
           <div className={s.copper_head}>
@@ -204,6 +223,12 @@ const Configuration = ({
         </div>
       </div>
       <div className={s.main}>
+      <div>
+
+
+      {/* Modal component, conditionally rendered */}
+      <BasicModal open={open} handleUpload={handleUpload}/>
+    </div>
         <div className={s.upload}>
           <h2>Upload Image</h2>
           <Collapse />
@@ -222,18 +247,7 @@ const Configuration = ({
           </button> */}
           {/* <button>
           <HorizontalArrow /> <span>Centre Horizontally</span>
-        </button> */}
-<div style={{ position: 'relative', display: 'inline-block' }}>
-  <a 
-    href= {photoEditorUrl}
-    target="_blank" 
-    rel="noopener noreferrer"
-    className={s.hover_link}
-  >
-    Open Photo Editor
-  </a>
-  <span className={s.tooltip_text}>You can edit the photo first then you can upload it again here</span>
-</div>      
+        </button> */}    
         <ColorBtn />
           <div className={s.uploadBtn}>
             <input
@@ -248,7 +262,13 @@ const Configuration = ({
               <Upload />
               <span>Upload New Image</span>
             </label>
+            <br></br>
+            <label htmlFor="react-upload">
+              <Upload />
+              <button onClick={openModal}>Design Image</button>
+            </label>
           </div>
+   
         </div>
         <div className={s.desc}>
           <div className={s.checkbox}>
