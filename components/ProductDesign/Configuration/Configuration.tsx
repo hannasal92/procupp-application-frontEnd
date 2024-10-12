@@ -21,6 +21,7 @@ import Cropper, { ReactCropperElement } from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import Button from "@/components/Common/Button";
 import BasicModal from './Modal';
+import ImagesModal from './templatesModal';
 const Configuration = ({
   orbitFollow,
 }: {
@@ -46,7 +47,7 @@ const Configuration = ({
   const [positionY, setPositionY] = useState(0);
   const [positionZ, setPositionZ] = useState(1);
   const [open, setOpen] = useState(false);
-
+  const [imageFile, setImageFile] = useState(new File([],""));
   // Open Modal
   const openModal = () => {
     setOpen(true);
@@ -78,7 +79,7 @@ const Configuration = ({
     }else if (uploadImageRef.current?.files){
       file = uploadImageRef.current?.files[0];
     }
-      store.fileImage = file ;
+      setImageFile(file);
       // create an image element with that selected file
       var img = new Image();
       img.src = window.URL.createObjectURL(file);
@@ -89,7 +90,7 @@ const Configuration = ({
         // unload it
         window.URL.revokeObjectURL(img.src);
         // check its dimensions
-        if (width === height) {
+        if (width !== height) {
           detailBoxRef.current!.style.backgroundImage = `url(${URL.createObjectURL(
             file
           )})`;
@@ -128,12 +129,12 @@ const Configuration = ({
 
   const handleAddToCart = async () => {
     try {
-
+      
       let image = await handleSaveCanvas();
       const formdata = new FormData();
       formdata.append(
         "file",
-        cropFile ? cropFile : uploadImageRef.current!.files![0]
+        cropFile ? cropFile : imageFile
       );
       formdata.append("alt", "source-product-img");
       let sourceImage = await axios({
@@ -225,9 +226,8 @@ const Configuration = ({
       <div className={s.main}>
       <div>
 
-
       {/* Modal component, conditionally rendered */}
-      <BasicModal open={open} handleUpload={handleUpload}/>
+      <BasicModal open={open} closeModal={closeModal} handleUpload={handleUpload} uploadImageRef={uploadImageRef}/>
     </div>
         <div className={s.upload}>
           <h2>Upload Image</h2>

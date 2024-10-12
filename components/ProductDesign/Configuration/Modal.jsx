@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Example from '../../DesignImage/ExampleDefaults';
+import ImageModal from './templatesModal'
+import { useState } from "react";
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -16,11 +19,27 @@ const style = {
   p: 4,
 };
 
-export default function BasicModal({open, handleUpload}) {
-  const handleClose = () => open = false;
+export default function BasicModal({open, closeModal, handleUpload, uploadImageRef}) {
+  const handleClose = () => {
+    setShowExampleModal(false);
+    closeModal()
+  };
   const handleImage = (desc, modal) => {
+    setShowExampleModal(false);
     handleUpload(desc);
   }
+  const [showExampleModal, setShowExampleModal] = useState(false);
+  const [imageData, setImageData] = useState({});
+  const showDesignToolModal = (img) => {
+    setImageData(img);
+    setShowExampleModal(true);
+  }
+
+  const backBtn = () => {
+    setShowExampleModal(false)
+  }
+
+
   return (
     <div>
       <Modal
@@ -30,10 +49,18 @@ export default function BasicModal({open, handleUpload}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit & Design You Image
+            <Button onClick={handleClose} style={{position: "absolute", right : 0}}>X</Button>
+            {showExampleModal  && <Button onClick={backBtn} >back</Button> }
+
           </Typography>
-             <Example handleUpload={handleImage}/>
+          
+          {!showExampleModal &&  <ImageModal showDesignToolModal={showDesignToolModal}></ImageModal>}
+
+          {showExampleModal &&  <Example handleUpload={handleImage} uploadImageRef={uploadImageRef} imageData={imageData}/>}
+         
         </Box>
       </Modal>
     </div>
