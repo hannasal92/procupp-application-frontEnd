@@ -1,0 +1,57 @@
+
+/* Wrapper for the gallery */
+.gallery_wrapper {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Title above the images */
+.gallery_title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Container for the image grid */
+.gallery_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Individual gallery item */
+.gallery_item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center; /* Center the label */
+}
+
+.gallery_item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery_item:hover img {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.gallery_item::before {
+  content: "";
+  display: block;
+  padding-top: 40%; /* Aspect ratio of 4:3 */
+}
+
+/* Label below the image */
+.gallery_label {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+  font-weight: bold;
+}
